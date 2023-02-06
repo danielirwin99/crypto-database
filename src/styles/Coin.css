@@ -97,4 +97,16 @@ th {
   th {
     padding: 3px;
   }
+
+  .coin__rank {
+    margin-top: 20px;
+  }
+
+  .coin__price > h1 {
+    font-size: 32px;
+  }
+
+  .coin__content > p {
+    font-size: 18px;
+  }
 }
