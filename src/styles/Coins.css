@@ -15,11 +15,6 @@
   font-weight: 700;
 }
 
-.coin-name {
-  margin-left: -4rem;
-}
-
-.coin-row
 
 @media screen and (max-width: 720px) {
   .hide-mobile {
