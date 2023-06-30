@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="navbar">
         <FaCoins className="icon" />
         <h1 className="navbar-heading">
-          Coin <span className="purple">Search</span>
+          <span className="purple">CryptoVault</span>
         </h1>
       </div>
     </Link>
