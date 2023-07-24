@@ -13,3 +13,6 @@
   color: #6900ff;
 }
 
+.navbar > a :hover {
+  text-decoration: none;
+}

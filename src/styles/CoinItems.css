@@ -1,12 +1,18 @@
 .coin-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   background-color: #26272b;
   box-shadow: 0px 0px 12px #18191b;
   border-radius: 8px;
   margin: 2rem 1rem;
   padding: 0.7rem 1rem;
+  align-items: center;
+}
+
+@media screen and (max-width: 720px) {
+  .coin-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .coin-row:hover {
@@ -25,5 +31,3 @@ img {
   display: flex;
   align-items: center;
 }
-
-

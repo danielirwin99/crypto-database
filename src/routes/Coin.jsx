@@ -7,7 +7,7 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 
 const Coin = () => {
   // When you click the coin it fires this
-  const [coin, setCoin] = useState({});
+  const [coin, setCoin] = useState([]);
 
   // Allows you to fetch different parameters to show the different coins
   const params = useParams();
@@ -15,16 +15,16 @@ const Coin = () => {
   // API Fetch for the ID of each Coin
   const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}`;
 
+  async function fetchCoin() {
+    const { data } = await axios.get(url);
+    setCoin(data);
+
+    console.log(data.market_data?.price_change_percentage_24h_in_currency.aud);
+  }
+
   // After you click the coin what it fetches
   useEffect(() => {
-    axios
-      .get(url)
-      .then((res) => {
-        setCoin(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    fetchCoin();
   }, []);
 
   return (
@@ -73,7 +73,15 @@ const Coin = () => {
                 <td>
                   {coin.market_data?.price_change_percentage_1h_in_currency
                     .aud ? (
-                    <p>
+                    <p
+                      style={{
+                        color:
+                          coin.market_data
+                            ?.price_change_percentage_1h_in_currency.aud > 0
+                            ? "#7CFC00"
+                            : "#FF0000",
+                      }}
+                    >
                       {coin.market_data.price_change_percentage_1h_in_currency.aud.toFixed(
                         2
                       )}{" "}
@@ -83,16 +91,35 @@ const Coin = () => {
                 </td>
                 <td>
                   {coin.market_data?.price_change_percentage_24h_in_currency
-                    ? coin.market_data.price_change_percentage_24h_in_currency.aud.toFixed(
+                    .aud ? (
+                    <p
+                      style={{
+                        color:
+                          coin.market_data
+                            ?.price_change_percentage_24h_in_currency.aud > 0
+                            ? "#7CFC00"
+                            : "#FF0000",
+                      }}
+                    >
+                      {coin.market_data.price_change_percentage_24h_in_currency.aud.toFixed(
                         2
-                      )
-                    : null}{" "}
-                  %
+                      )}{" "}
+                      %
+                    </p>
+                  ) : null}
                 </td>
                 <td>
                   {coin.market_data?.price_change_percentage_7d_in_currency
                     .aud ? (
-                    <p>
+                    <p
+                      style={{
+                        color:
+                          coin.market_data
+                            ?.price_change_percentage_7d_in_currency.aud > 0
+                            ? "#7CFC00"
+                            : "#FF0000",
+                      }}
+                    >
                       {coin.market_data.price_change_percentage_7d_in_currency.aud.toFixed(
                         2
                       )}{" "}
@@ -103,7 +130,15 @@ const Coin = () => {
                 <td>
                   {coin.market_data?.price_change_percentage_14d_in_currency
                     .aud ? (
-                    <p>
+                    <p
+                      style={{
+                        color:
+                          coin.market_data
+                            ?.price_change_percentage_14d_in_currency.aud > 0
+                            ? "#7CFC00"
+                            : "#FF0000",
+                      }}
+                    >
                       {coin.market_data.price_change_percentage_14d_in_currency.aud.toFixed(
                         2
                       )}{" "}
@@ -114,7 +149,15 @@ const Coin = () => {
                 <td>
                   {coin.market_data?.price_change_percentage_30d_in_currency
                     .aud ? (
-                    <p>
+                    <p
+                      style={{
+                        color:
+                          coin.market_data
+                            ?.price_change_percentage_30d_in_currency.aud > 0
+                            ? "#7CFC00"
+                            : "#FF0000",
+                      }}
+                    >
                       {coin.market_data.price_change_percentage_30d_in_currency.aud.toFixed(
                         2
                       )}{" "}
@@ -125,7 +168,15 @@ const Coin = () => {
                 <td>
                   {coin.market_data?.price_change_percentage_1y_in_currency
                     .aud ? (
-                    <p>
+                    <p
+                      style={{
+                        color:
+                          coin.market_data
+                            ?.price_change_percentage_1y_in_currency.aud > 0
+                            ? "#7CFC00"
+                            : "#FF0000",
+                      }}
+                    >
                       {coin.market_data.price_change_percentage_1y_in_currency.aud.toFixed(
                         2
                       )}{" "}
@@ -175,6 +226,7 @@ const Coin = () => {
           <div className="about">
             <h3>About</h3>
             <p
+              className="description"
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(
                   coin.description ? coin.description.en : ""

@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.description{
+  line-height: 1.5;
+}
+
 .back {
   position: absolute;
   top: 48px;

@@ -4,7 +4,8 @@
 }
 
 .heading {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   justify-content: space-between;
   align-items: center;
   background-color: #26272b;
@@ -15,9 +16,16 @@
   font-weight: 700;
 }
 
-
 @media screen and (max-width: 720px) {
   .hide-mobile {
+    display: none;
+  }
+
+  .heading {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .heading:nth-child() {
     display: none;
   }
 }
