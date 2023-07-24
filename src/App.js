@@ -4,6 +4,7 @@ import Coins from "./components/Coins";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Coin from "./routes/Coin";
+import { ThemeProvider } from "@mui/material";
 
 function App() {
   const [coins, setCoins] = useState([]);
