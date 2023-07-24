@@ -11,6 +11,11 @@
   max-height: 500px;
 }
 
+.coin__content > .about > h3 {
+  font-size: 30px;
+  text-decoration: underline;
+}
+
 .description {
   display: -webkit-box;
   line-height: 1.5;

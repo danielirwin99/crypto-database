@@ -238,8 +238,9 @@ const Coin = () => {
                 className="description"
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(
-                    coin.description ? coin.description.en : ""
-                  ).substring(0, 1000),
+                    coin.description.en.substring(0, 1000) ||
+                      "No Information to show...."
+                  ),
                 }}
               ></p>
             </div>
